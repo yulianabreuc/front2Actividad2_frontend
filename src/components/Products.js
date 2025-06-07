@@ -104,6 +104,16 @@ const ProductsList = ({ isAdmin, isAuthenticated, showFavorites = false }) => {
 
   return (
     <div className="mt-4 mb-32">
+      {isAdmin && (
+        <div className="mb-8">
+          <button 
+            onClick={() => handleOpenModal()} 
+            className="bg-primary px-4 py-2 rounded-lg text-white font-bold hover:bg-primary-dark"
+          >
+            Crear nuevo producto
+          </button>
+        </div>
+      )}
       <h2 className="text-primary text-2xl font-bold mb-6">
         {showFavorites ? "Favoritos:" : "Productos:"}
       </h2>
@@ -176,16 +186,7 @@ const ProductsList = ({ isAdmin, isAuthenticated, showFavorites = false }) => {
           ))}
         </div>
       )}
-      {isAdmin && (
-        <div className="mt-8">
-          <button 
-            onClick={() => handleOpenModal()} 
-            className="bg-primary px-4 py-2 rounded-lg text-white font-bold hover:bg-primary-dark"
-          >
-            Crear nuevo producto
-          </button>
-        </div>
-      )}
+      
       {isModalOpen && (
         <ProductModal 
           onClose={handleCloseModal} 
